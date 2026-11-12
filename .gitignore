@@ -1,0 +1,20 @@
+# python
+__pycache__/
+*.pyc
+.venv/
+venv/
+.pytest_cache/
+*.db
+
+# node
+node_modules/
+dist/
+
+# env files (only .env.example goes in the repo)
+.env
+.env.local
+
+# misc
+.DS_Store
+.claude/
+.vscode/
