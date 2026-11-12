@@ -8,8 +8,8 @@ TaskPilot is a to-do app where you don't have to click around much. You just typ
 
 | | |
 |---|---|
-| Frontend | `<VERCEL_URL>` |
-| Backend | `<RENDER_URL>` (Swagger docs at `<RENDER_URL>/docs`) |
+| Frontend | https://taskpilot-henna-theta.vercel.app |
+| Backend | https://taskpilot-api-2rlg.onrender.com (Swagger docs at https://taskpilot-api-2rlg.onrender.com/docs) |
 
 | Role | Email | Password |
 |---|---|---|
