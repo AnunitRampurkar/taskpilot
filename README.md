@@ -25,7 +25,7 @@ The demo user already has 3 tasks in it so you can start chatting straight away.
 | Part | What I used | Why |
 |---|---|---|
 | Backend | FastAPI, SQLAlchemy 2.0, Pydantic v2 | FastAPI was fixed. SQLAlchemy lets the same code run on SQLite locally and Postgres in prod. |
-| LLM | Groq, `llama-3.3-70b-versatile` | Free, really fast, and it supports tool calling properly. I call it through the `openai` Python SDK pointed at Groq's OpenAI compatible URL, so switching to OpenRouter, Gemini etc. is only an env change. |
+| LLM | Groq, `openai/gpt-oss-120b` | Free tier, really fast (around 500 tokens/sec) and good at tool calling. I first used Llama 3.3 70B but Groq moved it to enterprise only, so I switched. I call it through the `openai` Python SDK pointed at Groq's OpenAI compatible URL, so switching to OpenRouter, Gemini etc. is only an env change. |
 | Agent | Plain Python loop, no framework | The loop is about 60 lines (`backend/app/agent/runner.py`). I looked at LangGraph, but for 4 to 6 tools a framework felt like extra stuff to explain without adding much. Writing it myself also meant I fully control where the user id comes from. |
 | Database | Neon Postgres (free tier) | Render's disk gets wiped on restart and Render Postgres expires in 30 days, so Neon made more sense. |
 | Auth | Own JWT auth (PyJWT + bcrypt) | Small enough to write myself and I wanted to see exactly how the role checks work instead of hiding them in a third party service. |
