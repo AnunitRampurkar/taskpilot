@@ -19,6 +19,11 @@ const TOOL_LABELS = {
   assign_task: "Assign task",
 };
 
+// the model sometimes still sends markdown, strip the bold/heading marks so it reads clean
+function cleanText(text) {
+  return (text || "").replace(/\*\*(.+?)\*\*/g, "$1").replace(/^#+\s*/gm, "");
+}
+
 function ToolCalls({ calls }) {
   const [open, setOpen] = useState(false);
   if (!calls || calls.length === 0) return null;
@@ -176,7 +181,7 @@ export default function Chat() {
 
           {messages.map((m) => (
             <div key={m.id} className={`msg msg-${m.role}`}>
-              <div className="bubble">{m.content}</div>
+              <div className="bubble">{cleanText(m.content)}</div>
               {m.role === "assistant" && <ToolCalls calls={m.tool_calls} />}
             </div>
           ))}
