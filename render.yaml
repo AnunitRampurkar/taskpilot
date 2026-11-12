@@ -1,0 +1,32 @@
+services:
+  - type: web
+    name: taskpilot-api
+    runtime: python
+    plan: free
+    rootDir: backend
+    buildCommand: pip install -r requirements.txt
+    startCommand: uvicorn app.main:app --host 0.0.0.0 --port $PORT
+    healthCheckPath: /health
+    envVars:
+      - key: PYTHON_VERSION
+        value: 3.12.7
+      - key: DATABASE_URL
+        sync: false
+      - key: JWT_SECRET
+        generateValue: true
+      - key: LLM_API_KEY
+        sync: false
+      - key: LLM_MODEL
+        value: llama-3.3-70b-versatile
+      - key: FRONTEND_ORIGINS
+        sync: false
+      - key: APP_TIMEZONE
+        value: Asia/Kolkata
+      - key: ADMIN_EMAIL
+        value: admin@taskpilot.dev
+      - key: ADMIN_PASSWORD
+        sync: false
+      - key: DEMO_USER_EMAIL
+        value: user@taskpilot.dev
+      - key: DEMO_USER_PASSWORD
+        sync: false
